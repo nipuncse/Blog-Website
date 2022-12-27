@@ -27,7 +27,7 @@ body {
     transform: translate(-50%, -50%);
     width: 350px;
     min-height: 200px;
-    background: #fdb91feb;
+    background: #000000eb;
     border-radius: 10px;
     padding: 40px;
     box-sizing: border-box;
@@ -53,7 +53,7 @@ h3 {
     border-bottom: 2px solid #262626;
     outline: none;
     height: 40px;
-    color: rgb(15, 0, 0);
+    color: #e0dd00;
     font-family: cursive;
     background: transparent;
     font-size: 16px;
@@ -62,7 +62,7 @@ h3 {
 }
 .loginBox input[type='text']:hover,
 .loginBox input[type='password']:hover {
-    color: #030001;
+    color: #e0dd00;
     /* border: 1px solid #000202; */
     /* box-shadow: 0 0 5px rgba(0, 255, 0, 0.3), 0 0 10px rgba(0, 255, 0, 0.2), */
     /* 0 0 15px rgba(0, 255, 0, 0.1), 0 2px 0 black; */
