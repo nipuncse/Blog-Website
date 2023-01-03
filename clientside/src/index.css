@@ -6,7 +6,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     /* background: url(../public/images/party.jpg) no-repeat; */
-    background: radial-gradient(#0f2027, #003f53, #02415c);
+    background: radial-gradient(#ce2696, #620180ad, #02415c);
 }
 
 code {
