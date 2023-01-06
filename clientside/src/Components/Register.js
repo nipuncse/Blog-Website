@@ -2,8 +2,11 @@ import React, { useState } from 'react'
 import classes from '../css/register.module.css'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
-export default function Register() {
+import { toast } from 'react-toastify'
+import withAuth2 from './hoc/withAuth2'
+const Register = () => {
 	let navigate = useNavigate()
+	var toastId = undefined
 	const [user, setUser] = useState({
 		username: "",
 		password: ""
@@ -18,18 +21,34 @@ export default function Register() {
 		})
 	}
 
+	function loader() {
+		toastId = toast.success('Registering', { autoClose: false })
+	}
+
 	const handleSubmit = async (e) => {
 		e.preventDefault()
 		console.log(user)
+
+		if (user.username.length < 5 || user.password.length < 5) {
+			toast.error('Username & Password should be greater than 4 length')
+			return
+		}
+
+		loader()
 		const res = await axios.post("http://localhost:4200/registeruser", user)
-		if (res.data.message === 1) {
+		toast.dismiss(toastId)
+		if (res.data.message === 'success') {
 			console.log(res.data.user)
 			// props.updateUser(res.data.user)
-			alert('Registration Successful, Please login to continue')
+			// alert('Registration Successful, Please login to continue')
+			toast.success('Registered Successfully')
+			toast.success('Please login to continue')
 			navigate('/login')
 		}
 		else
-			alert("User already Registered")
+			toast.error('User already Registered')
+
+
 	}
 
 	return (
@@ -51,3 +70,5 @@ export default function Register() {
 		</>
 	)
 }
+
+export default withAuth2(Register)

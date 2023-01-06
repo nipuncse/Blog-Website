@@ -5,14 +5,14 @@ import { UserContext } from "../../App";
 const withAuth = (Component) => {
 	return (props) => {
 		const navigate = useNavigate();
-		const { currentUser, setCurrentUser } = useContext(UserContext);
+		// const { currentUser, setCurrentUser } = useContext(UserContext);
 		const items = JSON.parse(localStorage.getItem('whoisthis'));
 
 		useEffect(() => {
 			// debugger;
-			if (!items?.username) {
+			if (items?.username) {
 				// Redirect to login page
-				navigate('/login');
+				navigate('/homepage');
 				// setCurrentUser({
 				// 	username: items.username,
 				// 	password: items.password

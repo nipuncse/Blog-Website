@@ -36,6 +36,7 @@ app.post('/loginuser', (req, res) => {
 app.post('/registeruser', async (req, res) => {
 	console.log(req)
 	const { username, password } = req.body
+
 	try {
 		const details = new userinfo({
 			username: username,
@@ -44,11 +45,11 @@ app.post('/registeruser', async (req, res) => {
 
 		const registered = await details.save();
 		console.log(registered)
-		res.send({ message: 1, user: details })
+		res.send({ message: 'success', user: details })
 	}
 	catch (err) {
 		console.log(err)
-		res.send({ message: 0 })
+		res.send({ message: 'fail' })
 	}
 })
 

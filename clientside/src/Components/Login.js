@@ -1,45 +1,64 @@
-import React, { useState, useContext, createContext } from 'react'
+import React, { useState, useContext } from 'react'
 import classes from '../css/login.module.css'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { UserContext } from '../App'
+import { toast } from 'react-toastify'
 export default function Login() {
 	let navigate = useNavigate()
+	var toastId = undefined
+	// var res = undefined
 	const { currentUser, setCurrentUser } = useContext(UserContext)
+	// const { loading, setLoading } = useState(true)
 	const [user, setUser] = useState({
 		username: "",
 		password: ""
 	})
-
+	// localStorage.removeItem('whoisthis                        ')
 	const change = e => {
 		const { name, value } = e.target
-		console.log(`${name} ${value}`)
+		// console.log(`${name} ${value}`)
 		setUser({
 			...user,
 			[name]: value
 		})
 	}
 
+	function loader() {
+		toastId = toast.warning('Authenticating', { autoClose: false });
+		return
+	}
 	const handleSubmit = async (e) => {
 		e.preventDefault()
+		// const toastId
+		if (user.username.length < 5 || user.password.length < 5) {
+			toast.error('Username & Password should be greater than 4 length')
+			return
+		}
+
+		loader()
 		const res = await axios.post("http://localhost:4200/loginuser", user)
+
+		// setTimeout(() => { toast.dismiss(toastId) }, 5000);
+		toast.dismiss(toastId)
+
 		if (res.data.message === true) {
-			console.log(user)
+			console.log(`backend wala ${user}`)
 			console.log(currentUser)
+			localStorage.setItem('whoisthis', JSON.stringify(user))
 			setCurrentUser({
 				username: user.username,
 				password: user.password,
 			})
-			alert('Login Successful')
+			// setLoading(false)
+
+			toast.success('Login Successful')
 			navigate('/homepage')
 		}
 		else {
-			alert("wrong credentials ! Try again")
+			toast.error("Wrong credentials ! Try again")
 		}
 	}
-
-
-
 
 	return (
 		<>
