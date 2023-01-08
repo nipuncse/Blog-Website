@@ -3,6 +3,7 @@ const conn = require('./db/conn.js')
 const cors = require('cors')
 const path = require('path')
 const userinfo = require('./models/userregister')
+const newblog = require('./models/allblogs')
 const express = require('express')
 const app = express()
 
@@ -11,6 +12,8 @@ app.use(express.json())
 app.use(express.urlencoded())
 app.use(cors())
 const port = process.env.PORT || 4200
+
+//for login
 
 app.post('/loginuser', (req, res) => {
 	console.log(req.body)
@@ -31,7 +34,9 @@ app.post('/loginuser', (req, res) => {
 		}
 	})
 })
+// ?-----------------------------------------------------------
 
+// for register
 
 app.post('/registeruser', async (req, res) => {
 	console.log(req)
@@ -53,7 +58,64 @@ app.post('/registeruser', async (req, res) => {
 	}
 })
 
+// -----------------------------------------------------------
 
+// for Homepage
+
+app.get('/allblogs', (req, res) => {
+
+	try {
+		newblog.find({}, function (err, allDetails) {
+			console.log(allDetails)
+			if (err) {
+				res.send({ message: "0" })
+				console.log(err);
+			} else {
+				res.send({ message: "1", details: allDetails })
+			}
+		})
+	}
+
+	catch (err) {
+		res.send({ message: "0" })
+	}
+
+})
+
+// -----------------------------------------------------------
+
+// for Newblog
+
+app.post('/addblog', async (req, res) => {
+	console.log(req)
+	const { username, uuid, heading, content, category, timestamp } = req.body
+
+	var add
+	try {
+		add = await newblog.updateOne(
+			{ uuid: uuid },
+			{ $set: { username: username, uuid: uuid, heading: heading, content: content, category: category, timestamp: timestamp } },
+			{ upsert: true }
+		);
+	}
+	catch (err) {
+		res.send({ message: '-1' });
+	}
+	console.log(add)
+	if (add.matchedCount) {
+		res.send({ message: "1" })
+		console.log('blogupdated')
+	}
+	else if (!add.matchedCount) {
+		res.send({ message: "0" })
+		console.log('blogadded')
+	}
+})
+
+
+
+
+// Port is listening here
 app.listen(port, () => {
 	console.log('tmkoc')
 })

@@ -43,17 +43,18 @@ export default function Sidebar1() {
 							};
 					},
 				}}>
+
 					<MenuItem link="/homepage" onClick={() => handleMenuItemClick('/homepage')}> Home </MenuItem>
 					<SubMenu label="Categories">
 
-						<MenuItem className={classes.mymenuitem}> Indian Polity </MenuItem>
-						<MenuItem>Geopolitics </MenuItem>
-						<MenuItem>Indian History </MenuItem>
-						<MenuItem>Economy </MenuItem>
-						<MenuItem>Geography </MenuItem>
-						<MenuItem>Politics </MenuItem>
-						<MenuItem>Tech </MenuItem>
-						<MenuItem>Personalities </MenuItem>
+						<MenuItem className={classes.mymenuitem} onClick={() => handleMenuItemClick('/blog?category=Indian Polity')}> Indian Polity </MenuItem>
+						<MenuItem onClick={() => handleMenuItemClick('/blog?category=Geopolitics')}>Geopolitics </MenuItem>
+						<MenuItem onClick={() => handleMenuItemClick('/blog?category=Indian History')}>Indian History </MenuItem>
+						<MenuItem onClick={() => handleMenuItemClick('/blog?category=Economy')}>Economy </MenuItem>
+						<MenuItem onClick={() => handleMenuItemClick('/blog?category=Geography')}>Geography </MenuItem>
+						<MenuItem onClick={() => handleMenuItemClick('/blog?category=Politics')}>Politics </MenuItem>
+						<MenuItem onClick={() => handleMenuItemClick('/blog?category=Tech')}>Tech </MenuItem>
+						<MenuItem onClick={() => handleMenuItemClick('/blog?category=Personalities')}>Personalities </MenuItem>
 					</SubMenu>
 
 					<MenuItem> Top Blogs    <HiAnnotation size='10%' /></MenuItem>

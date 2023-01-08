@@ -13,6 +13,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Topnav from './Components/Topnav';
 import Newblog from './Components/Newblog';
+import Categoryblog from './Components/Categoryblog';
 // import classes from './css/sidebarparent.module.css'
 // import classes1 from './css/page.module.css'
 
@@ -47,6 +48,7 @@ function App() {
 								<Route exact path="/deleteblog" element={<Deleteblog />} />
 								<Route exact path="/mystats" element={<Mystats />} />
 								<Route exact path="/login" element={<Login />} />
+								<Route exact path="/blog" element={<Categoryblog />} />
 								<Route exact path="/" element={<Register />}>
 								</Route>
 							</Routes>
