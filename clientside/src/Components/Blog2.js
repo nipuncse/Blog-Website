@@ -70,7 +70,7 @@ export default function Blog2(props) {
 		<>
 			<div className="container col-4 mx-3 my-3" style={{ width: "18rem" }}>
 				<div className="card">
-					<div className="card__header">
+					<div className="card__header bg-dark">
 						<img src="https://source.unsplash.com/600x400/?computer" alt="card__image" className="card__image" width="600" />
 					</div>
 					<div className="card__body bg-dark d-flex">
@@ -78,7 +78,7 @@ export default function Blog2(props) {
 							<span className="tag tag-blue ">{props.category}</span>
 							<span className='text-white'><FcLike></FcLike>  {props.likes}</span>
 						</div>
-						<br />
+
 						<h4 className='text-white'>{props.heading}</h4>
 						<p>{actualcontent}</p>
 						<small className='text-white '>{date}</small>
