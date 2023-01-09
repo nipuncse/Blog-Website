@@ -24,8 +24,8 @@ const Homepage = () => {
 				const res = await axios.get("http://localhost:4200/allblogs");
 				toast.dismiss(locid)
 				console.log(res);
-				setnewData(res.data.details);
-				// console.log(res.data.details);
+				setnewData(res.data.details.reverse());
+				console.log(res.data.details);
 				// if (res.data.details)
 			}
 			catch (err) {
@@ -43,7 +43,7 @@ const Homepage = () => {
 				<div className="row">
 					{newData.map((element) => {
 						return (
-							<Blog key={element.uuid} heading={element.heading} timestamp={element.timestamp} content={element.content} category={element.category} author={element.username} />
+							<Blog key={element.uuid} heading={element.heading} likes={element.likes} timestamp={element.timestamp} content={element.content} category={element.category} author={element.username} />
 						)
 					})};
 

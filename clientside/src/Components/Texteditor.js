@@ -32,6 +32,11 @@ const Texteditor = () => {
 			return
 		}
 
+		if (headingValue.length > 42) {
+			toast.error('Blog Heading should be less than 42 charcters')
+			return
+		}
+
 		if (selectedValue === "0") {
 			toast.error('Please select a category for the blog')
 			return

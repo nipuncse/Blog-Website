@@ -94,7 +94,7 @@ app.post('/addblog', async (req, res) => {
 	try {
 		add = await newblog.updateOne(
 			{ uuid: uuid },
-			{ $set: { username: username, uuid: uuid, heading: heading, content: content, category: category, timestamp: timestamp } },
+			{ $set: { username: username, uuid: uuid, heading: heading, content: content, category: category, timestamp: timestamp, likes: "0" } },
 			{ upsert: true }
 		);
 	}
@@ -110,6 +110,70 @@ app.post('/addblog', async (req, res) => {
 		res.send({ message: "0" })
 		console.log('blogadded')
 	}
+})
+
+
+//--------------------------------------------------------
+
+//for categor blogs
+
+app.post('/bycategory', (req, res) => {
+	console.log(req.body)
+	try {
+		newblog.find({ category: req.body.category }, function (err, allDetails) {
+			console.log(allDetails)
+			if (err) {
+				res.send({ message: "0" })
+				console.log(err);
+			} else {
+				res.send({ message: "1", details: allDetails })
+			}
+		})
+	}
+
+	catch (err) {
+		res.send({ message: "0" })
+	}
+
+})
+
+//------------------------------------------------------------
+// for user blogs
+
+app.post('/getblogbyuser', (req, res) => {
+	console.log(req.body)
+	try {
+		newblog.find({ username: req.body.id }, function (err, allDetails) {
+			console.log(allDetails)
+			if (err) {
+				res.send({ message: "0" })
+				console.log(err);
+			} else {
+				res.send({ message: "1", details: allDetails })
+			}
+		})
+	}
+
+	catch (err) {
+		res.send({ message: "0" })
+	}
+
+})
+
+//-------------------------------------------------------------
+// for delete blog
+
+app.post('/deleteblog', (req, res) => {
+	console.log(req.body)
+	const { id } = req.body
+	newblog.remove({ _id: id }, function (err, allDetails) {
+		if (err) {
+			res.send({ message: "0" })
+			console.log(err);
+		} else {
+			res.send({ message: "1", details: allDetails })
+		}
+	})
 })
 
 

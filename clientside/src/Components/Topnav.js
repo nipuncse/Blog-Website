@@ -16,10 +16,10 @@ export default function Topnav() {
 					<div className="collapse navbar-collapse float-right" style={{ flexGrow: 0 }} id="navbarNav">
 						<ul className="navbar-nav">
 							<li className="nav-item mx-3">
-								<a className="btn btn-info " role="button" href='http://localhost:3000/newblog'> <MdPostAdd></MdPostAdd> Create New</a>
+								<a className="btn btn-info " role="button" href='http://localhost:3000/newblog'> <MdPostAdd></MdPostAdd> Add New</a>
 							</li>
 							<li className="nav-item mx-3">
-								<a className="btn btn-danger " role="button" href='http://localhost:3000/deleteblog'> <MdDelete></MdDelete> Delete Mine</a>
+								<a className="btn btn-danger " role="button" href='http://localhost:3000/deleteblog'> <MdDelete></MdDelete> Delete Blogs</a>
 							</li>
 							<li className="nav-item mx-3">
 								<a className="btn btn-success " role="button" href='http://localhost:3000/deleteblog'> <FiEdit></FiEdit> Edit Stuff</a>
