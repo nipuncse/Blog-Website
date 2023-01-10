@@ -43,7 +43,7 @@ const Homepage = () => {
 				<div className="row">
 					{newData.map((element) => {
 						return (
-							<Blog key={element.uuid} heading={element.heading} likes={element.likes} timestamp={element.timestamp} content={element.content} category={element.category} author={element.username} />
+							<Blog key={element.uuid} id={element._id} heading={element.heading} likes={element.likes} timestamp={element.timestamp} content={element.content} category={element.category} author={element.username} />
 						)
 					})};
 

@@ -176,6 +176,32 @@ app.post('/deleteblog', (req, res) => {
 	})
 })
 
+//-------------------------------------------------------------
+//for blog details
+
+app.post('/getblogdetails', (req, res) => {
+	console.log(req.body)
+	const { id } = req.body
+
+	try {
+		newblog.find({ _id: id }, function (err, allDetails) {
+			console.log(allDetails)
+			if (err) {
+				res.send({ message: "0" })
+				console.log(err);
+			} else {
+				res.send({ message: "1", details: allDetails })
+			}
+		})
+	}
+
+	catch (err) {
+		res.send({ message: "0" })
+	}
+
+
+})
+
 
 
 

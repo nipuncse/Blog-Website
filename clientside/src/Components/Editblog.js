@@ -1,9 +1,11 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import Blog from './Blog2';
+import Texteditor from './Texteditor'
 import withAuth from './hoc/withAuth'
+import axios from 'axios';
+import Blog from './Blog3';
 
-function Deleteblog() {
+
+function Editblog() {
 	const [newData, setnewData] = useState([]);
 	const user = { id: JSON.parse(localStorage.getItem('whoisthis')).username }
 	// console.log(user)
@@ -13,7 +15,7 @@ function Deleteblog() {
 			const res = await axios.post("http://localhost:4200/getblogbyuser", {
 				id: user.id
 			});
-			setnewData(res.data.details);
+			setnewData(res.data.details.reverse());
 			// console.log(res.data.details.length);
 			// console.log(res.data.details);
 		}
@@ -27,7 +29,9 @@ function Deleteblog() {
 	}, [user.id])
 	return (
 		<>
-			<h1 className='text-center'>Delete Blogs</h1>
+			{/* <h1 className='text-white text-center'>Edit Your Blog here</h1> */}
+			{/* <Texteditor /> */}
+			<h1 className='text-center text-white'>Edit Blogs</h1>
 			{newData.length !== 0 && <div className="container mx-auto my-5">
 				<div className="row">
 					{newData.map((element) => {
@@ -39,12 +43,9 @@ function Deleteblog() {
 				</div>
 			</div>
 			}
-			{newData.length === 0 && <div className='text-center text-dark font-lg'>
-				<h1 className='display-5'>404: No Blog found in this category!</h1>
-				<a className="btn btn-info " role="button" href='http://localhost:3000/newblog'> Start Writing Now</a>
-			</div>}
+			{newData.length === 0 && <div>No Cycles Found : 404</div>}
 		</>
 	)
 }
 
-export default withAuth(Deleteblog)
+export default withAuth(Editblog)

@@ -1,25 +1,35 @@
 import React from 'react'
-// import classes from '../css/blogs.module.css'
+import '../css/blogs.css'
 import { FcLike } from "react-icons/fc";
-// import DOMPurify from 'dompurify';
-
-
-export default function Blog(props) {
-	const text = props.content.slice(0, 10)
+import { FiEdit } from "react-icons/fi";
+import axios from 'axios';
+import { toast } from 'react-toastify';
+export default function Blog2(props) {
+	// const navigate =
+	const text = props.content
 	const day = props.timestamp.slice(8, 10)
 	const month = props.timestamp.slice(5, 7)
 	const year = props.timestamp.slice(0, 4)
 
-	// var links = parseHTML('<!doctype html><html><head></head><body><a>Link 1</a><a>Link 2</a></body></html>').getElementsByTagName('a');
-	const htmlString = props.content
-	const div = document.createElement('div');
-	div.innerHTML = htmlString;
-	const ntext = div.textContent.slice(0, 100);
+	// const htmlString = '<p>This is some <strong>bold</strong> text.</p>';
 
-	// var headingContent = props.heading
-	// var diff = 42 - headingContent.length
-	// const newheading = headingContent + '.'.repeat(diff)
-	// const newheading = headingContent.padEnd(diff, " ")
+	// Create a DOM element to hold the HTML string
+	const div = document.createElement('div');
+	div.innerHTML = text;
+
+	// Extract the plain text from the DOM element
+	const ntext = div.textContent;
+
+	console.log("This is the testing string " + ntext);
+
+	var actualcontent = "start"
+	if (ntext.length >= 100)
+		actualcontent = ntext.slice(0, 99) + "....."
+
+	else
+		actualcontent = ntext
+
+
 
 	function getMonthName(monthNumber) {
 		const months = [
@@ -39,15 +49,15 @@ export default function Blog(props) {
 		return months[monthNumber - 1];
 	}
 	const date = day + ' ' + getMonthName(month) + ' ' + year
-	const handleonClick = (e) => {
-		console.log('take a read button')
+	const user = { id: JSON.parse(localStorage.getItem('whoisthis')).username }
+
+	const handleonClick = async (e) => {
 		const id = e.target.id
-		window.location.href = `/readblog?id=${id}`
+		window.location.href = `/finaledit?id=${id}`
 	}
 
 	return (
 		<>
-
 			<div className="container col-4 mx-3 my-3" style={{ width: "18rem" }}>
 				<div className="card">
 					<div className="card__header bg-dark">
@@ -60,15 +70,11 @@ export default function Blog(props) {
 						</div>
 
 						<h4 className='text-white'>{props.heading}</h4>
-						<p className='specificpara' style={{ flexGrow: '1' }}>{ntext}</p>
-						<div className='d-flex justify-content-between'>
-							<div className='d-flex flex-column'>
-								<small className='text-white '>{date}</small>
-								<small className='text-white '>By:- {props.author}</small>
-							</div>
-							<button type="button" onClick={handleonClick} id={props.id} className='btn btn-info'>Take a Read</button>
-						</div>
+						<p>{actualcontent}</p>
+						<small className='text-white '>{date}</small>
+						<button type="button" id={props.obid} onClick={handleonClick} className='btn btn-success'><FiEdit></FiEdit> Edit Now</button>
 					</div>
+
 					{/* <div className="card__footer" >
 						<div className="user">
 							<img src="https://avatars.dicebear.com/api/adventurer/author.svg?r=50&size=50" alt="user__image" className="user__image" />

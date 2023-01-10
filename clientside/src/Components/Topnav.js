@@ -22,7 +22,7 @@ export default function Topnav() {
 								<a className="btn btn-danger " role="button" href='http://localhost:3000/deleteblog'> <MdDelete></MdDelete> Delete Blogs</a>
 							</li>
 							<li className="nav-item mx-3">
-								<a className="btn btn-success " role="button" href='http://localhost:3000/deleteblog'> <FiEdit></FiEdit> Edit Stuff</a>
+								<a className="btn btn-success " role="button" href='http://localhost:3000/editblog'> <FiEdit></FiEdit> Edit Stuff</a>
 							</li>
 							<li className="nav-item mx-3">
 								<a className="btn btn-warning " role="button" href='http://localhost:3000/mystats'> <IoIosStats></IoIosStats> My Stats</a>

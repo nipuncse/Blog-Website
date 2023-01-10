@@ -61,8 +61,9 @@ img {
 
 .tag-blue {
     background: #56ccf2;
-    background: linear-gradient(to bottom, #2f80ed, #56ccf2);
-    color: #fafafa;
+    background: linear-gradient(to bottom, #edd62f, #f25656);
+    /* color: #fafafa; */
+    color: #000000;
 }
 
 .tag-brown {
@@ -75,6 +76,9 @@ img {
     background: #cb2d3e;
     background: linear-gradient(to bottom, #ef473a, #cb2d3e);
     color: #fafafa;
+}
+.specificpara {
+    color: #fd7cff;
 }
 
 .card__body h4 {

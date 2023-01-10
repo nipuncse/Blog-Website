@@ -14,6 +14,10 @@ import 'react-toastify/dist/ReactToastify.css';
 import Topnav from './Components/Topnav';
 import Newblog from './Components/Newblog';
 import Categoryblog from './Components/Categoryblog';
+import Editblog from './Components/Editblog';
+import Finaledit from './Components/Finaledit';
+import { RxCodesandboxLogo } from 'react-icons/rx';
+import Readblog from './Components/Readblog';
 // import classes from './css/sidebarparent.module.css'
 // import classes1 from './css/page.module.css'
 
@@ -46,7 +50,11 @@ function App() {
 								<Route exact path="/homepage" element={<Homepage />} />
 								<Route exact path="/newblog" element={<Newblog />} />
 								<Route exact path="/deleteblog" element={<Deleteblog />} />
+								{/* <Route exact path="/editblog" element={<Editblog />} /> */}
+								{/* <Route exact path="/finaledit" element={<Finaledit />} /> */}
 								<Route exact path="/mystats" element={<Mystats />} />
+								<Route exact path="/readblog" element={<Readblog />} />
+
 								<Route exact path="/login" element={<Login />} />
 								<Route exact path="/blog" element={<Categoryblog />} />
 								<Route exact path="/" element={<Register />}>
