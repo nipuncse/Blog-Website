@@ -11,24 +11,12 @@ export default function Blog2(props) {
 	const month = props.timestamp.slice(5, 7)
 	const year = props.timestamp.slice(0, 4)
 
-	// const htmlString = '<p>This is some <strong>bold</strong> text.</p>';
 
-	// Create a DOM element to hold the HTML string
+	const htmlString = props.content
 	const div = document.createElement('div');
-	div.innerHTML = text;
-
-	// Extract the plain text from the DOM element
-	const ntext = div.textContent;
-
-	console.log("This is the testing string " + ntext);
-
-	var actualcontent = "start"
-	if (ntext.length >= 100)
-		actualcontent = ntext.slice(0, 99) + "....."
-
-	else
-		actualcontent = ntext
-
+	div.innerHTML = htmlString;
+	const ntext = div.textContent.slice(0, 100);
+	console.log(ntext)
 
 
 	function getMonthName(monthNumber) {
@@ -70,7 +58,7 @@ export default function Blog2(props) {
 						</div>
 
 						<h4 className='text-white'>{props.heading}</h4>
-						<p>{actualcontent}</p>
+						<p className='text-white'>{ntext}</p>
 						<small className='text-white '>{date}</small>
 						<button type="button" id={props.obid} onClick={handleonClick} className='btn btn-success'><FiEdit></FiEdit> Edit Now</button>
 					</div>

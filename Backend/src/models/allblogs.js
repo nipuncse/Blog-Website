@@ -22,7 +22,8 @@ const blogdata = new Schema({
 	},
 	timestamp: {
 		type: String
-	}
+	},
+	usersliked: { type: Array, "default": [] }
 })
 
 const blog = new mongoose.model("blogs", blogdata)

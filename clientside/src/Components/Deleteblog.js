@@ -27,12 +27,15 @@ function Deleteblog() {
 	}, [user.id])
 	return (
 		<>
-			<h1 className='text-center'>Delete Blogs</h1>
+			<h1 className='text-center'>Delete Blogs </h1>
+			{/* <div class="alert alert-primary mx-auto" role="alert">
+				Data is sorted in recently uploaded manner
+			</div> */}
 			{newData.length !== 0 && <div className="container mx-auto my-5">
 				<div className="row">
 					{newData.map((element) => {
 						return (
-							<Blog login={user.id} key={element.uuid} obid={element._id} likes={element.likes} heading={element.heading} timestamp={element.timestamp} content={element.content} category={element.category} author={element.username} />
+							<Blog login={user.id} key={element.uuid} obid={element._id} likes={element.usersliked.length} heading={element.heading} timestamp={element.timestamp} content={element.content} category={element.category} author={element.username} />
 						)
 					})};
 

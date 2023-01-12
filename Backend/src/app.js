@@ -94,7 +94,7 @@ app.post('/addblog', async (req, res) => {
 	try {
 		add = await newblog.updateOne(
 			{ uuid: uuid },
-			{ $set: { username: username, uuid: uuid, heading: heading, content: content, category: category, timestamp: timestamp, likes: "0" } },
+			{ $set: { username: username, uuid: uuid, heading: heading, content: content, category: category, timestamp: timestamp, likes: '0', usersliked: [] } },
 			{ upsert: true }
 		);
 	}
@@ -201,8 +201,64 @@ app.post('/getblogdetails', (req, res) => {
 
 
 })
+// --------------------------------------------------
+// for like update positive
+app.post('/updatelikepos', async (req, res) => {
+	console.log(req)
+	const { id, user } = req.body
 
+	// let add = undefined;
+	try {
+		const add = await newblog.updateOne(
+			{ _id: id },
+			{ $push: { usersliked: user } },
+			(err, allDetails) => {
+				if (err) {
+					res.send({ message: '-1' })
+					throw err
+				}
+				else
+					res.send({ message: '1', details: allDetails })
+			}
+		);
+	}
+	catch (err) {
+		console.log(err);
+		// res.send({ message: '-1' });
+		console.log('mujhe jabardasti likha hua hai, 21232343434')
+	}
+	// console.log(add)
 
+})
+
+// --------------------------------------------------
+// for like update positive
+app.post('/updatelikeneg', async (req, res) => {
+	console.log(req)
+	const { id, user } = req.body
+
+	try {
+		const add = await newblog.updateOne(
+			{ _id: id },
+			{ $pull: { usersliked: user } },
+			(err, allDetails) => {
+				if (err) {
+					res.send({ message: '-1' })
+					throw err
+				}
+				else
+					res.send({ message: '1', details: allDetails })
+			}
+		);
+	}
+	catch (err) {
+		console.log(err);
+		// res.send({ message: '-1' });
+		console.log('mujhe jabardasti likha hua hai, 21232343434')
+	}
+	// console.log(add)
+
+})
 
 
 // Port is listening here
