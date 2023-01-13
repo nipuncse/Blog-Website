@@ -44,8 +44,8 @@ export default function Login() {
 		toast.dismiss(toastId)
 
 		if (res.data.message === true) {
-			console.log(`backend wala ${user}`)
-			console.log(currentUser)
+			// console.log(`backend wala ${user}`)
+			// console.log(currentUser)
 			localStorage.setItem('whoisthis', JSON.stringify(user))
 			setCurrentUser({
 				username: user.username,

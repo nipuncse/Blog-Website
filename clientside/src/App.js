@@ -18,6 +18,7 @@ import Editblog from './Components/Editblog';
 import Finaledit from './Components/Finaledit';
 import { RxCodesandboxLogo } from 'react-icons/rx';
 import Readblog from './Components/Readblog';
+import Developer from './Components/Developer';
 // import classes from './css/sidebarparent.module.css'
 // import classes1 from './css/page.module.css'
 
@@ -48,10 +49,11 @@ function App() {
 						<BrowserRouter>
 							<Routes>
 								<Route exact path="/homepage" element={<Homepage />} />
+								<Route exact path="/developer" element={<Developer />} />
 								<Route exact path="/newblog" element={<Newblog />} />
 								<Route exact path="/deleteblog" element={<Deleteblog />} />
-								{/* <Route exact path="/editblog" element={<Editblog />} /> */}
-								{/* <Route exact path="/finaledit" element={<Finaledit />} /> */}
+								<Route exact path="/editblog" element={<Editblog />} />
+								<Route exact path="/finaledit" element={<Finaledit />} />
 								<Route exact path="/mystats" element={<Mystats />} />
 								<Route exact path="/readblog" element={<Readblog />} />
 

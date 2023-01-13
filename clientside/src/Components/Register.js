@@ -14,7 +14,7 @@ const Register = () => {
 
 	const change = e => {
 		const { name, value } = e.target
-		console.log(`${name} ${value}`)
+		// console.log(`${name} ${value}`)
 		setUser({
 			...user,
 			[name]: value
@@ -27,7 +27,7 @@ const Register = () => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault()
-		console.log(user)
+		// console.log(user)
 
 		if (user.username.length < 5 || user.password.length < 5) {
 			toast.error('Username & Password should be greater than 4 length')
@@ -38,7 +38,7 @@ const Register = () => {
 		const res = await axios.post("http://localhost:4200/registeruser", user)
 		toast.dismiss(toastId)
 		if (res.data.message === 'success') {
-			console.log(res.data.user)
+			// console.log(res.data.user)
 			// props.updateUser(res.data.user)
 			// alert('Registration Successful, Please login to continue')
 			toast.success('Registered Successfully')

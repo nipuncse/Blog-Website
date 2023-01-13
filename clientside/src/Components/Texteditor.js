@@ -23,7 +23,7 @@ const Texteditor = () => {
 
 		const selectedValue = selectVal.current.value;
 		const headingValue = headVal.current.value;
-		console.log(selectedValue)
+		// console.log(selectedValue)
 		console.log(`This is uuid ` + id)
 		// console.log(headingValue)
 
@@ -44,8 +44,8 @@ const Texteditor = () => {
 
 		const eddata = editorRef.current.getContent()
 
-		console.log('editor wali -->' + editorRef.current.getContent());
-		console.log('welcome wali -->' + welcome)
+		// console.log('editor wali -->' + editorRef.current.getContent());
+		// console.log('welcome wali -->' + welcome)
 		if (editorRef?.current.getContent() === welcome) {
 			// setValue(editorRef?.current?.getContent());
 			toast.error(`Data can't be submitted empty `)
@@ -54,7 +54,7 @@ const Texteditor = () => {
 
 		var today = new Date()
 		// var curdate = today.getDate() + '/' + today.getMonth() + '/' + today.getFullYear() + ' ' + today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds()
-		console.log(today)
+		// console.log(today)
 
 		const user = {
 			username: JSON.parse(localStorage.getItem('whoisthis')).username,
@@ -80,22 +80,6 @@ const Texteditor = () => {
 		else if (res.data.message === '-1')
 			toast.error('Connection Error')
 
-		// if (res.data.message === true) {
-		// 	console.log(`backend wala ${user}`)
-		// 	console.log(currentUser)
-		// 	localStorage.setItem('whoisthis', JSON.stringify(user))
-		// 	setCurrentUser({
-		// 		username: user.username,
-		// 		password: user.password,
-		// 	})
-		// 	// setLoading(false)
-
-		// 	toast.success('Login Successful')
-		// 	navigate('/homepage')
-		// }
-		// else {
-		// 	toast.error("Wrong credentials ! Try again")
-		// }
 	}
 
 

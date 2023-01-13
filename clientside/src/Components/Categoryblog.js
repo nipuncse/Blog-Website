@@ -25,7 +25,7 @@ function Categoryblog() {
 				// console.log(res);
 				if (res.data.message === "1") {
 					toast.success("Fetch Successful")
-					console.log(res.data.details);
+					// console.log(res.data.details);
 					setnewData(res.data.details);
 				}
 				// if (res.data.details)
@@ -33,7 +33,7 @@ function Categoryblog() {
 			catch (err) {
 				// handle err
 				toast.error("Fetch Error")
-				console.log(err)
+				// console.log(err)
 				toast.error('Error loading blogs')
 
 			}

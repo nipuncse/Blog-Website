@@ -16,7 +16,7 @@ export default function Blog2(props) {
 	const div = document.createElement('div');
 	div.innerHTML = htmlString;
 	const ntext = div.textContent.slice(0, 100);
-	console.log(ntext)
+	// console.log(ntext)
 
 
 	function getMonthName(monthNumber) {

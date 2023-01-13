@@ -23,9 +23,9 @@ const Homepage = () => {
 				const locid = loader()
 				const res = await axios.get("http://localhost:4200/allblogs");
 				toast.dismiss(locid)
-				console.log(res);
+				// console.log(res);
 				setnewData(res.data.details.reverse());
-				console.log(res.data.details);
+				// console.log(res.data.details);
 				// if (res.data.details)
 			}
 			catch (err) {

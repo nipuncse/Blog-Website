@@ -112,6 +112,26 @@ app.post('/addblog', async (req, res) => {
 	}
 })
 
+// ----------------------------------------------------------
+// for updating blog
+
+app.post('/updateblog', async (req, res) => {
+	console.log(req)
+	const { id, heading, content, category, timestamp } = req.body
+
+	var add
+	try {
+		add = await newblog.updateOne(
+			{ _id: id },
+			{ $set: { heading: heading, content: content, category: category } },
+		);
+		res.send({ message: '1' })
+	}
+	catch (err) {
+		res.send({ message: '-1' });
+	}
+})
+
 
 //--------------------------------------------------------
 

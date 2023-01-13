@@ -40,7 +40,7 @@ export default function Blog(props) {
 	}
 	const date = day + ' ' + getMonthName(month) + ' ' + year
 	const handleonClick = (e) => {
-		console.log('take a read button')
+		// console.log('take a read button')
 		const id = e.target.id
 		window.location.href = `/readblog?id=${id}`
 	}

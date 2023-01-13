@@ -60,6 +60,7 @@ export default function Sidebar1() {
 					<MenuItem> Top Blogs    <HiAnnotation size='10%' /></MenuItem>
 					<MenuItem>Top Authors   <BsPersonFill size='10%' /></MenuItem>
 					<MenuItem> Top Categories    <BiCategory size='10%' /></MenuItem>
+					<MenuItem link="/developer" onClick={() => handleMenuItemClick('/developer')}> Developer Profile    <BiCategory size='10%' /></MenuItem>
 					{items && <MenuItem onClick={signout}> Sign Out   <RxExit size='10%' /></MenuItem>}
 				</Menu>
 			</Sidebar>

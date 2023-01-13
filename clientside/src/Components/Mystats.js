@@ -1,10 +1,26 @@
-import React from 'react'
-import withAuth from './hoc/withAuth'
 
-function Mystats() {
+import React from "react";
+import Chart from "chart.js/auto";
+import { Bar } from "react-chartjs-2";
+
+const Mystats = () => {
+	const labels = ["January", "February", "March", "April", "May", "June"];
+	const data = {
+		labels: labels,
+		datasets: [
+			{
+				label: "My First dataset",
+				backgroundColor: "rgb(255, 99, 132)",
+				borderColor: "rgb(255, 99, 132)",
+				data: [0, 10, 5, 2, 20, 30, 45],
+			},
+		],
+	};
 	return (
-		<h1>Mystats</h1>
-	)
-}
+		<div>
+			<Bar data={data} />
+		</div>
+	);
+};
 
-export default withAuth(Mystats)
+export default Mystats;

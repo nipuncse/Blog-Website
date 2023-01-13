@@ -80,7 +80,7 @@ function Readblog() {
 
 		else if (res.data.message === '1') {
 			console.log('update successful')
-			console.log(res.data.details)
+			// console.log(res.data.details)
 			setliked(0)
 			setlikecount(likecount - 1)
 		}

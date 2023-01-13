@@ -11,7 +11,14 @@ export default function Topnav() {
 		<>
 			<nav className="navbar navbar-expand-lg bg-body-tertiary" style={{ display: 'flex' }} >
 				<div className="container-fluid">
-					<a className="navbar-brand" href="/">Hello {name}</a>
+					{/* <a className="navbar-brand" href="/">Hello {name}</a> */}
+					<div className='bg-dark' style={{ borderRadius: '5px' }}>
+						<a className="navbar-brand text-white mx-2" href="/">The Written Mind</a>
+						{/* <a className="navbar-brand text-white" style={{ backgroundColor: 'green', border: '2px solid yellow' }} href="/">{name}</a> */}
+						<a className="btn btn-info " role="button" href='/'> {name}</a>
+
+
+					</div>
 
 					<div className="collapse navbar-collapse float-right" style={{ flexGrow: 0 }} id="navbarNav">
 						<ul className="navbar-nav">
